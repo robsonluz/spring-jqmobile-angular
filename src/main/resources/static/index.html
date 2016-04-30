@@ -6,26 +6,7 @@
     <title>Notícias</title>
      
     <script src="/js/jquery-1.11.0.min.js"></script>
-    <script>
-    var jmobile = null;
-    $(document).on( "mobileinit", function() {
-    	//jmobile = $.mobile;
-    	console.log('mobileinit');
-    	$.mobile.ajaxEnabled = false;
-    	$.mobile.dynamicBaseEnabled = false;
-    	$.mobile.hashListeningEnabled = false;
-    	$.mobile.linkBindingEnabled = false;
-    	$.mobile.autoInitializePage = false;
-    	
-    	
-    });
-    </script>
-    
     <script src="/js/jquery.mobile-1.4.1.min.js"></script>
-    
-     
-
-     
 	     
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
@@ -35,7 +16,23 @@
     
     <link rel="stylesheet"  href="/css/jquery.mobile-1.4.1.min.css" /> 
 </head>
-<body ng-view>
+<body>
+
+	<div data-role="page" ng-controller="NoticiaController as noticiaController">
+        <div data-role="header">
+        	<h1>Menu</h1>        	
+        </div>
+        <div data-role="content" >
+        	<ul data-role="listview">
+				<li ng-repeat="noticia in noticiaController.noticias">
+					{{noticia.titulo}}
+				</li>
+			</ul>
+		</div>
+        <div data-role="footer" data-position="fixed">
+        	<h4>Rodapé</h4>
+        </div>        	
+	</div>
 
 </body>
 </html>
