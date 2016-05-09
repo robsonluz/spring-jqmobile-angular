@@ -65,5 +65,13 @@ public class NoticiaRestTests {
 	public void testDelete() {
 		template.delete("http://localhost:" + port + "/noticias/2");
 	}
+
+	
+	@Test
+	public void testAprovar() {
+		String response = template.postForObject("http://localhost:" + port + "/noticias/1/aprovar", 
+													null, String.class);
+		System.out.println(response);
+	}	
 	
 }

@@ -55,5 +55,16 @@ public class NoticiaController {
 	public Message delete(@PathVariable Long id) {
 		noticiaRepository.delete(id);
 		return Message.OK;
-	}		
+	}
+	
+	/**
+	 * Aprova uma notícia
+	 */
+	@RequestMapping(value="/{id}/aprovar", method=RequestMethod.POST)
+	public Noticia aprovar(@PathVariable Long id) {
+		Noticia noticia = noticiaRepository.findOne(id);
+		noticia.setSituacao("Aprovada");
+		noticiaRepository.save(noticia);
+		return noticia;
+	}	
 }

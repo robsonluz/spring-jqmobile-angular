@@ -16,6 +16,7 @@ public class Noticia {
 	private Long id;
 	private String titulo;
 	private String texto;
+	private String situacao = "Nova";
 	
 	public Noticia() {
 	}
@@ -41,6 +42,13 @@ public class Noticia {
 	}
 	public void setTexto(String texto) {
 		this.texto = texto;
+	}
+	
+	public String getSituacao() {
+		return situacao;
+	}
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
 	}
 	
 	
