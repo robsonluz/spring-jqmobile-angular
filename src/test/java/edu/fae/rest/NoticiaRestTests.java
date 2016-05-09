@@ -74,4 +74,22 @@ public class NoticiaRestTests {
 		System.out.println(response);
 	}	
 	
+	
+	@Test
+	public void testFindAprovadas() {
+		//Primeiramente aprova uma noticia
+		template.postForObject("http://localhost:" + port + "/noticias/1/aprovar", null, String.class);
+		
+		String response = template.getForObject("http://localhost:" + port + "/noticias/aprovadas", 
+				String.class);
+		System.out.println(response);
+	}	
+	
+	@Test
+	public void testBusca() {
+		String response = template.getForObject("http://localhost:" + port + "/noticias/busca?texto=Notícia", 
+				String.class);
+		System.out.println(response);
+	}		
+	
 }

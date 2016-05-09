@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.fae.rest.model.Message;
@@ -23,6 +24,23 @@ import edu.fae.rest.repository.NoticiaRepository;
 public class NoticiaController {
 	@Autowired NoticiaRepository noticiaRepository;
 
+	/**
+	 * @return Busca notícias
+	 */
+	@RequestMapping(value="/busca", method=RequestMethod.GET)
+	public List<Noticia> findAprovadas(@RequestParam("texto") String texto) {
+		return noticiaRepository.find("%" + texto + "%");
+	}
+	
+	
+	/**
+	 * @return Retorna todas as notícias aprovadas
+	 */
+	@RequestMapping(value="/aprovadas", method=RequestMethod.GET)
+	public List<Noticia> findAprovadas() {
+		return noticiaRepository.findBySituacao("Aprovada");
+	}	
+	
 	/**
 	 * @return Retorna todas as notícias
 	 */
