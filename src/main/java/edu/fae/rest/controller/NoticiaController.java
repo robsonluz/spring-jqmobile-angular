@@ -24,7 +24,7 @@ public class NoticiaController {
 	/**
 	 * @return Retorna todas as notícias
 	 */
-	@RequestMapping("")
+	@RequestMapping(value="", method=RequestMethod.GET)
 	public List<Noticia> findAll() {
 		return noticiaRepository.findAll();
 	}

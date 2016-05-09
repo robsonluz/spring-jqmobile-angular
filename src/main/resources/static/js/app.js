@@ -19,13 +19,13 @@ app.controller('NoticiaController', function($scope, NoticiaService) {
 	$scope.noticia = {};
 	
 	$scope.save = function() {
-    	//Chama o service para salvar
-    	NoticiaService.save(this.noticia, function(){
-    		//atualiza as noticias
-    		$scope.noticias = NoticiaService.query(); 
-    	});
-    	//Volta para a tela anterior
-    	window.history.back();
+    		//Chama o service para salvar
+		NoticiaService.save(this.noticia, function(){
+    			//atualiza as noticias
+    			$scope.noticias = NoticiaService.query(); 
+    		});
+    		//Volta para a tela anterior
+    		window.history.back();
     }	
 });
 
