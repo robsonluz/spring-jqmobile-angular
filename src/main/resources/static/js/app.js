@@ -2,7 +2,13 @@ var app = angular.module('app', ['ngResource']);
 
 //NoticiaService
 app.factory('NoticiaService', function($resource) {
-	return $resource('/noticias/:id', {}, {});
+	return $resource('/noticias/:id', {}, {
+		aprovar: { 
+			method: 'POST',
+			url: '/noticias/:id/aprovar',
+			params: { id: "@id" }
+		}		
+	});
 });
 
 //NoticiaListController
@@ -20,6 +26,9 @@ app.controller('NoticiaShowController', function($scope, NoticiaService) {
     	NoticiaService.remove($scope.noticia, function(){
     		location.href = "noticia.html";
     	});
+    }
+	$scope.aprovar = function() {
+    	$scope.noticia = NoticiaService.aprovar($scope.noticia);
     }	
 });
 

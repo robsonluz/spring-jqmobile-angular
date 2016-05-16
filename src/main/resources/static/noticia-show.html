@@ -28,12 +28,19 @@
 	                <li>
 	                    <div>{{noticia.texto}}</div>
 	                </li>
+	                <li>
+	                    <div>Situação: {{noticia.situacao}}</div>
+	                </li>	                
 	            </ul>        
 	            
 	            <a href="noticia-form.html?id={{noticia.id}}" data-role="button" 
 	            	data-inline="true">Alterar</a>            
 	            <a href="#confirm-remove" data-role="button" 
-	            	data-inline="true"  data-rel="dialog" data-transition="pop" >Excluir</a>            
+	            	data-inline="true"  data-rel="dialog" data-transition="pop" >Excluir</a>
+	            	  
+                <button data-role="button" data-inline="true" ng-click="aprovar()">
+                	Aprovar
+                </button> 		            	          
 	        </div>
 	        <div data-role="footer" data-position="fixed">
 	        	<h4>Rodapé</h4>

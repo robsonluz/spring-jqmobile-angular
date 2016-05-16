@@ -28,7 +28,7 @@ public class NoticiaController {
 	 * @return Busca notícias
 	 */
 	@RequestMapping(value="/busca", method=RequestMethod.GET)
-	public List<Noticia> findAprovadas(@RequestParam("texto") String texto) {
+	public List<Noticia> busca(@RequestParam("texto") String texto) {
 		return noticiaRepository.find("%" + texto + "%");
 	}
 	
