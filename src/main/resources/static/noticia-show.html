@@ -18,25 +18,26 @@
 </head>
 <body>
 
-	<div data-role="page" ng-controller="NoticiaListController">
+	<div data-role="page" ng-controller="NoticiaShowController">
         <div data-role="header">
-        	<h1>Notícias</h1>        	
+        	<h1>Notícia</h1>
         </div>
-        <div data-role="content" >
-        	<a href="noticia-form.html" data-role="button" rel="external">Nova Notícia</a>
-        	
-        	<ul data-role="listview" data-inset="true">
-				<li ng-repeat="noticia in noticias">
-					<a href="noticia-show.html?id={{noticia.id}}" rel="external">{{noticia.titulo}}</a>
-					<a href="noticia-form.html?id={{noticia.id}}" rel="external"></a>
-				</li>
-			</ul>
-		</div>
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">{{noticia.titulo}}</li>
+                <li>
+                    <div>{{noticia.texto}}</div>
+                </li>
+            </ul>        
+            
+            <a href="noticia-form.html?id={{noticia.id}}" data-role="button" data-inline="true">Alterar</a>            
+            <a href="#" id="linkExcluir" noticia-id="${idNoticia}" data-role="button" data-inline="true">Excluir</a>            
+        </div>
         <div data-role="footer" data-position="fixed">
         	<h4>Rodapé</h4>
-        </div>        	
-	</div>
-	
+        </div>
+    </div>	
+    
 
 </body>
 </html>

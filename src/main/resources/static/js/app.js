@@ -8,24 +8,30 @@ app.factory('NoticiaService', function($resource) {
 	return $resource('/noticias/:id', {}, {});
 });
 
-/**
- * NoticiaController: Controller para as telas de noticías
- */
-app.controller('NoticiaController', function($scope, NoticiaService) {
-	//Chama o serviço /noticias e guarda na propriedade noticias
-	$scope.noticias = NoticiaService.query();
-	
-	//Utilizado pelo formulario de nova noticia
-	$scope.noticia = {};
-	
+app.controller('NoticiaListController', function($scope, NoticiaService) {
+	$scope.noticias = NoticiaService.query();	
+});
+
+app.controller('NoticiaShowController', function($scope, NoticiaService) {
+	var id = getParameterByName("id");
+	if(id) {
+		$scope.noticia = NoticiaService.get({"id": id});
+	}
+	console.log('chegou aqui neste campo: ' + id);	
+});
+
+app.controller('NoticiaFormController', function($scope, NoticiaService) {
+	var id = getParameterByName("id");
+	if(id) {
+		$scope.noticia = NoticiaService.get({"id": id});
+	}else{
+		$scope.noticia = {};//Utilizado pelo formulario de nova noticia
+	}
+
 	$scope.save = function() {
-    		//Chama o service para salvar
-		NoticiaService.save(this.noticia, function(){
-    			//atualiza as noticias
-    			$scope.noticias = NoticiaService.query(); 
-    		});
-    		//Volta para a tela anterior
-    		window.history.back();
+		NoticiaService.save($scope.noticia); //Chama o service para salvar
+    	location.href="index.html";
     }	
 });
+
 

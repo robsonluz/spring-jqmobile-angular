@@ -18,25 +18,28 @@
 </head>
 <body>
 
-	<div data-role="page" ng-controller="NoticiaListController">
+	<div data-role="page" ng-controller="NoticiaFormController">
         <div data-role="header">
-        	<h1>Notícias</h1>        	
+        	<h1>Notícia</h1>
         </div>
-        <div data-role="content" >
-        	<a href="noticia-form.html" data-role="button" rel="external">Nova Notícia</a>
-        	
-        	<ul data-role="listview" data-inset="true">
-				<li ng-repeat="noticia in noticias">
-					<a href="noticia-show.html?id={{noticia.id}}" rel="external">{{noticia.titulo}}</a>
-					<a href="noticia-form.html?id={{noticia.id}}" rel="external"></a>
-				</li>
-			</ul>
-		</div>
+        <div data-role="content">
+			<div class="ui-body">
+                <div data-role="fieldcontain">
+					<label for="txtTitulo">Título:</label>
+					<input type="text" id="txtTitulo" ng-model="noticia.titulo" />
+                </div>
+                <div data-role="fieldcontain">
+					<label for="txtTexto">Texto:</label>
+					<textarea id="txtTexto" ng-model="noticia.texto"></textarea>
+                </div>  
+                <button ng-click="save()">Salvar</button>              				
+			</div>        
+        </div>
         <div data-role="footer" data-position="fixed">
         	<h4>Rodapé</h4>
-        </div>        	
-	</div>
-	
+        </div>
+    </div>	
+    
 
 </body>
 </html>
