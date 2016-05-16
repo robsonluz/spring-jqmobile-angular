@@ -18,14 +18,16 @@
 </head>
 <body>
 
-	<div data-role="page">
+	<div data-role="page" ng-controller="NoticiaListController">
         <div data-role="header">
-        	<h1>Pagina inicial</h1>        	
+        	<h1>Notícias</h1>        	
         </div>
         <div data-role="content" >
+        	<a href="noticia-form.html" data-role="button">Nova Notícia</a>
+        	
         	<ul data-role="listview" data-inset="true">
-				<li>
-					<a href="noticia.html">Notícias</a>
+				<li ng-repeat="noticia in noticias">
+					<a href="noticia-show.html?id={{noticia.id}}">{{noticia.titulo}}</a>
 				</li>
 			</ul>
 		</div>
@@ -37,3 +39,6 @@
 
 </body>
 </html>
+
+
+

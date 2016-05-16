@@ -6,38 +6,52 @@
     <title>Notícias</title>
      
     <script src="/js/jquery-1.11.0.min.js"></script>
+    <script src="/js/geral.js"></script>
     <script src="/js/jquery.mobile-1.4.1.min.js"></script>
 	     
 	<script src="/js/angular.min.js"></script>
 	<script src="/js/angular-resource.min.js"></script>
 	
-	<script src="/js/geral.js"></script>
     <script src="/js/app.js"></script>
     
     <link rel="stylesheet"  href="/css/jquery.mobile-1.4.1.min.css" /> 
 </head>
 <body>
-
-	<div data-role="page" ng-controller="NoticiaShowController">
-        <div data-role="header">
-        	<h1>Notícia</h1>
-        </div>
-        <div data-role="content">
-            <ul data-role="listview" data-inset="true">
-                <li data-role="list-divider">{{noticia.titulo}}</li>
-                <li>
-                    <div>{{noticia.texto}}</div>
-                </li>
-            </ul>        
-            
-            <a href="noticia-form.html?id={{noticia.id}}" data-role="button" data-inline="true">Alterar</a>            
-            <a href="#" id="linkExcluir" noticia-id="${idNoticia}" data-role="button" data-inline="true">Excluir</a>            
-        </div>
-        <div data-role="footer" data-position="fixed">
-        	<h4>Rodapé</h4>
-        </div>
-    </div>	
-    
+	<div ng-controller="NoticiaShowController">
+		<div data-role="page" >
+	        <div data-role="header">
+	        	<h1>Notícia</h1>
+	        </div>
+	        <div data-role="content">
+	            <ul data-role="listview" data-inset="true">
+	                <li data-role="list-divider">{{noticia.titulo}}</li>
+	                <li>
+	                    <div>{{noticia.texto}}</div>
+	                </li>
+	            </ul>        
+	            
+	            <a href="noticia-form.html?id={{noticia.id}}" data-role="button" 
+	            	data-inline="true">Alterar</a>            
+	            <a href="#confirm-remove" data-role="button" 
+	            	data-inline="true"  data-rel="dialog" data-transition="pop" >Excluir</a>            
+	        </div>
+	        <div data-role="footer" data-position="fixed">
+	        	<h4>Rodapé</h4>
+	        </div>
+	    </div>	
+	    
+		<div id="confirm-remove" data-role="page">
+	        <div data-role="header">
+	        	<h1>Notícia</h1>
+	        </div>
+	        <div data-role="content">
+	                Tem certeza que deseja Excluir?            				
+	                <button data-role="button" ng-click="remove()">
+	                	Remover
+	                </button> 			        
+	        </div>
+	    </div>    
+    </div>
 
 </body>
 </html>

@@ -8,3 +8,8 @@ function getParameterByName(param) {
 		return match && decodeURIComponent(match[1].replace(/\+/g, ' '));  
 	}
 }
+
+
+$(document).on( "mobileinit", function() {
+	$.mobile.ajaxEnabled = false;
+});
