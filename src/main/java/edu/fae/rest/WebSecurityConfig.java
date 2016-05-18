@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 import edu.fae.rest.security.AuthenticationProvider;
+import edu.fae.rest.service.UsuarioService;
 
 /**
  * Configurações de segurança
@@ -18,16 +19,18 @@ import edu.fae.rest.security.AuthenticationProvider;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    	//Autenticação de usuário administrativos
-    	auth.authenticationProvider(authenticationProvider());
-    }	
-    
-    @Bean
-    public AuthenticationProvider authenticationProvider() {
-    	return new AuthenticationProvider();
-    }    
+	@Autowired UsuarioService usuarioService;
+	
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//    	//Autenticação de usuário administrativos
+//    	auth.authenticationProvider(authenticationProvider());
+//    }	
+//    
+//    @Bean
+//    public AuthenticationProvider authenticationProvider() {
+//    	return new AuthenticationProvider();
+//    }    
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -39,9 +42,10 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-            .inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER");
+    	auth.userDetailsService(usuarioService);
+//        auth
+//            .inMemoryAuthentication()
+//                .withUser("user").password("password").roles("USER");
     }
     
 }
