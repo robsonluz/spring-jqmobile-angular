@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 public class Usuario implements UserDetails {
+	private static final long serialVersionUID = 598440685016769765L;
+	
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -18,7 +20,14 @@ public class Usuario implements UserDetails {
 	private String email;
 	private String password;
 	
-
+	public Usuario() {
+	}
+	
+	public Usuario(String nome, String email, String password) {
+		this.nome = nome;
+		this.email = email;
+		this.password = password;
+	}
 	public Long getId() {
 		return id;
 	}

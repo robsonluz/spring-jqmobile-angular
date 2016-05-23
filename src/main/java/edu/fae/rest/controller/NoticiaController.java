@@ -20,7 +20,7 @@ import edu.fae.rest.repository.NoticiaRepository;
  *
  */
 @RestController
-@RequestMapping("/noticias")
+@RequestMapping("/api/noticias")
 public class NoticiaController {
 	@Autowired NoticiaRepository noticiaRepository;
 
