@@ -3,6 +3,7 @@ package edu.fae.rest.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * 
@@ -17,6 +18,7 @@ public class Noticia {
 	private String titulo;
 	private String texto;
 	private String situacao = "Nova";
+	private Usuario usuario;
 	
 	public Noticia() {
 	}
@@ -49,6 +51,14 @@ public class Noticia {
 	}
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
+	}
+	
+	@ManyToOne
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	

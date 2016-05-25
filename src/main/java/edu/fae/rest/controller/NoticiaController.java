@@ -3,6 +3,7 @@ package edu.fae.rest.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.fae.rest.model.Message;
 import edu.fae.rest.model.Noticia;
+import edu.fae.rest.model.Usuario;
 import edu.fae.rest.repository.NoticiaRepository;
 
 /**
@@ -61,7 +63,8 @@ public class NoticiaController {
 	 * Insere uma notícia na base de dados
 	 */
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public Noticia save(@RequestBody Noticia noticia) {
+	public Noticia save(@RequestBody Noticia noticia, @AuthenticationPrincipal Usuario usuario) {
+		noticia.setUsuario(usuario);
 		noticiaRepository.save(noticia);
 		return noticia;
 	}		
