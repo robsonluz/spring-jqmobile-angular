@@ -76,7 +76,7 @@ app.controller('NoticiaFormController', function($scope, NoticiaService) {
 
 	$scope.save = function() {
 		NoticiaService.save($scope.noticia);
-    	//location.href = "noticia.html";
+    	location.href = "noticia.html";
     }	
 });
 
